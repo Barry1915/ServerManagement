@@ -45,7 +45,6 @@ public class SshController {
     public List<SyslogMessage>getauthlog(int page, int pageSize) throws JSchException, SftpException, IOException {
         return sshService.getauth(page,pageSize);
     }
-
     @GetMapping("/syslog/{id}")
     public List<SyslogMessage> getlog(@PathVariable int id){
         List<SyslogMessage> loglist = new ArrayList();
