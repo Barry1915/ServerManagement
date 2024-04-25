@@ -1,6 +1,7 @@
 package com.example.servermanagement.Controller;
 
 
+import com.example.servermanagement.Bean.LogModel;
 import com.example.servermanagement.Bean.SyslogMessage;
 import com.example.servermanagement.Bean.User;
 import com.example.servermanagement.Mapper.UserMapper;
@@ -26,25 +27,31 @@ public class SshController {
     @Autowired
     private SshService sshService;
 
-    @GetMapping("/syslog/133")
-    public String getRemotesyslog() throws JSchException, SftpException {
-        return sshService.readRemoteFile();
-    }
+
 
     @GetMapping("/syslog/test")
     public List<SyslogMessage> getRemotesyslog2() throws JSchException, SftpException {
         return sshService.readRemoteFile_v2();
     }
 
+    @GetMapping("/log/v2")
+    public List<LogModel>getlogv2(int page, int pageSize) throws JSchException, SftpException {
+        return sshService.readRemote(page,pageSize);
+    }
+
+
     @GetMapping("/syslog/page")
     public List<SyslogMessage>getlogpage(int page, int pageSize) throws JSchException, SftpException, IOException {
         return sshService.readRemoteFilePaged(page,pageSize);
     }
 
-    @GetMapping("authlog/page")
+    @GetMapping("/authlog/page")
     public List<SyslogMessage>getauthlog(int page, int pageSize) throws JSchException, SftpException, IOException {
         return sshService.getauth(page,pageSize);
     }
+
+
+
     @GetMapping("/syslog/{id}")
     public List<SyslogMessage> getlog(@PathVariable int id){
         List<SyslogMessage> loglist = new ArrayList();
