@@ -13,10 +13,10 @@ import java.util.List;
 
 @Service
 public class SshService {
-    private final String host = "172.20.137.133";
-    private final int port = 23333;
-    private final String user = "zouyinan";
-    private final String password = "zyn20002239"; // 替换为你的密码
+    private final String host = "";
+    private final int port = 1;
+    private final String user = "";
+    private final String password = ""; // 替换为你的密码
     private String remoteFilePath = "/home/zouyinan/syslog";
 
     public String readRemoteFile() throws JSchException, SftpException {
