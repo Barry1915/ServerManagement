@@ -17,6 +17,7 @@ public class SshService {
     private final int port = 1;
     private final String user = "";
     private final String password = ""; // 替换为你的密码
+
     private String remoteFilePath = "/home/zouyinan/syslog";
 
     public String readRemoteFile() throws JSchException, SftpException {
